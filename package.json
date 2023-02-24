@@ -1,0 +1,20 @@
+{
+  "name": "serverless-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "cd api/ably-token-request && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emsa16/serverless-chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emsa16/serverless-chat/issues"
+  },
+  "homepage": "https://github.com/emsa16/serverless-chat#readme"
+}
