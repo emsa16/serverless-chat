@@ -1,0 +1,11 @@
+[build]
+  command = "# no build command"
+
+[functions]
+  directory = "api"
+#  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
