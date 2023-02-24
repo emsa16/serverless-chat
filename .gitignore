@@ -1,6 +1,6 @@
 # Local Netlify folder
 .netlify
 
-netlify/functions/ably-token-request/node_modules
+node_modules
 
 .env
