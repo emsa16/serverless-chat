@@ -2,13 +2,18 @@ import * as dotenv from "dotenv";
 import * as Ably from "ably/promises";
 import { HandlerEvent, HandlerContext } from "@netlify/functions";
 
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'content-type': 'application/json'
+};
+
 dotenv.config();
 
 export async function handler(event: HandlerEvent, context: HandlerContext) {
   if (!process.env.ABLY_API_KEY) {
     return {
       statusCode: 500,
-      headers: { "content-type": "application/json" },
+      headers,
       body: JSON.stringify(`Server missing ABLY_API_KEY`)
     }
   }
@@ -18,7 +23,7 @@ export async function handler(event: HandlerEvent, context: HandlerContext) {
   const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
   return {
     statusCode: 200,
-    headers: { "content-type": "application/json" },
+    headers,
     body: JSON.stringify(tokenRequestData)
   };
 }
