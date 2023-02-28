@@ -22,7 +22,11 @@ export async function handler(event: HandlerEvent, _: HandlerContext) {
   const clientId = event.queryStringParameters?.["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID"; // TODO implement or remove
   const ably = new Ably.Realtime(process.env.ABLY_API_KEY_PUBLISH);
   const channel = ably.channels.get(CHANNEL);
-  await channel.publish(EVENT, {message: 'this is published to everyone', body: event.body}, err => console.log(err));
+  channel.publish(EVENT, event.body, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 
   return {
     statusCode: 200,
