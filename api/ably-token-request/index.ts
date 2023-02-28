@@ -10,16 +10,16 @@ const headers = {
 dotenv.config();
 
 export async function handler(event: HandlerEvent, context: HandlerContext) {
-  if (!process.env.ABLY_API_KEY) {
+  if (!process.env.ABLY_API_KEY_SUBSCRIBE) {
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify(`Server missing ABLY_API_KEY`)
+      body: JSON.stringify(`Server missing ABLY_API_KEY_SUBSCRIBE`)
     }
   }
 
   const clientId = event.queryStringParameters?.["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
-  const client = new Ably.Rest(process.env.ABLY_API_KEY);
+  const client = new Ably.Rest(process.env.ABLY_API_KEY_SUBSCRIBE);
   const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
   return {
     statusCode: 200,
