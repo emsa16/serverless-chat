@@ -4,17 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "cd api/ably-token-request && npm install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emsa16/serverless-chat.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Emil Sandberg",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/emsa16/serverless-chat/issues"
   },
-  "homepage": "https://github.com/emsa16/serverless-chat#readme"
+  "homepage": "https://github.com/emsa16/serverless-chat#readme",
+  "dependencies": {
+    "@netlify/functions": "^1.0.0",
+    "@types/node": "^14.0.0",
+    "typescript": "^4.7.4",
+    "ably": "^1.2.29",
+    "dotenv": "^16.0.1"
+  },
+  "keywords": [
+    "Netlify",
+    "Serverless",
+    "Typescript"
+  ]
 }
