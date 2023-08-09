@@ -40,7 +40,7 @@ async function parseIncomingMessage(message: string) {
   try {
       msg = JSON.parse(message);
   } catch (error) {
-      console.log(`Invalid JSON: ${error}`);
+      console.log(`ERROR: Invalid JSON: ${error}`);
       return formatMessage("Error: Invalid message format");
   }
 
@@ -49,7 +49,7 @@ async function parseIncomingMessage(message: string) {
           if (msg.params?.nickname) {
               return changeNick(msg.params.nickname, msg.sender);
           } else {
-              console.log("Missing nickname");
+              console.log("ERROR: Missing nickname");
               return formatMessage("Error: Missing nickname");
           }
       case "message":
@@ -57,11 +57,11 @@ async function parseIncomingMessage(message: string) {
               publish(msg.params.message, "user", msg.sender);
               return JSON.stringify({message: 'Message published'});
           } else {
-              console.log("Empty message");
+              console.log("ERROR: Empty message");
               return formatMessage("Error: Empty message");
           }
       default:
-          console.log("Invalid command");
+          console.log("ERROR: Invalid command");
           return formatMessage("Error: Invalid command.");
   }
 }
