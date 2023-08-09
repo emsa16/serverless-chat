@@ -63,6 +63,12 @@ async function parseIncomingMessage(message: string) {
               console.log("ERROR: Empty message");
               return formatMessage("Error: Empty message");
           }
+      case "connect":
+          publish(`${msg.sender} has connected`, "server", msg.sender);
+          return JSON.stringify({message: "Connection broadcast"});
+      case "disconnect":
+          publish(`${msg.sender} has disconnected`, "server", msg.sender);
+          return JSON.stringify({message: "Disconnection broadcast"});  
       default:
           console.log("ERROR: Invalid command");
           return formatMessage("Error: Invalid command.");
