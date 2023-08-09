@@ -5,6 +5,10 @@ import { HEADERS } from "../../utils/constants";
 
 dotenv.config();
 
+/**
+ * Provides token for Ably endpoint to client
+ * With this endpoint no need to store secret Ably API key
+ */
 export async function handler(event: HandlerEvent, _: HandlerContext) {
   if (!process.env.ABLY_API_KEY_SUBSCRIBE) {
     return {

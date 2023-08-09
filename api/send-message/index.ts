@@ -66,6 +66,9 @@ async function parseIncomingMessage(message: string) {
   }
 }
 
+/**
+ * Manages incoming messages and optionally publishes to Ably channel
+ */
 export async function handler(event: HandlerEvent, _: HandlerContext) {
   if (!process.env.ABLY_API_KEY_PUBLISH) {
     return {
