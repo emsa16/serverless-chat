@@ -1,19 +1,8 @@
 import * as dotenv from "dotenv";
 import * as Ably from "ably/promises";
 import { HandlerEvent, HandlerContext } from "@netlify/functions";
-import { HEADERS } from "../../utils/constants";
-
-type Message = {
-  sender: string;
-  command: string;
-  params?: {
-    message?: string;
-    nickname?: string;
-  }
-}
-
-const CHANNEL = 'getting-started';
-const EVENT = 'greeting';
+import { CHANNEL, EVENT, HEADERS } from "../../utils/constants";
+import { Message } from "../../utils/types";
   
 dotenv.config();
 

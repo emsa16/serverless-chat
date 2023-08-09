@@ -5,3 +5,12 @@ export type Document = {
     data: any,
     ts: number
 }
+
+export type Message = {
+    sender: string;
+    command: string;
+    params?: {
+      message?: string;
+      nickname?: string;
+    }
+  }
