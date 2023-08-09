@@ -6,14 +6,14 @@ import { Message } from "../../utils/types";
   
 dotenv.config();
 
-const formatMessage = (data, origin="server", nickname="Server") =>
-  JSON.stringify({
+function formatMessage(data: string, origin="server", nickname="Server") {
+  return JSON.stringify({
     timestamp: Date(),
-    origin: origin,
-    nickname: nickname,
-    data: data
-})
-
+    origin,
+    nickname,
+    data
+  });
+}
 
 function publish(message: string, origin: string, sender: string) {
   const formattedMessage = formatMessage(message, origin, sender);
