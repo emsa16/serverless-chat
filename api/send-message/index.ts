@@ -45,6 +45,9 @@ async function parseIncomingMessage(message: string) {
   }
 
   switch (msg.command) {
+      case "move":
+          // TODO
+          break;
       case "nick":
           if (msg.params?.nickname) {
               return changeNick(msg.params.nickname, msg.sender);
@@ -86,7 +89,7 @@ export async function handler(event: HandlerEvent, _: HandlerContext) {
   }
 
   // TODO implement or remove
-  const clientId = event.queryStringParameters?.["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
+  // const clientId = event.queryStringParameters?.["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
 
   const responseMessage = await parseIncomingMessage(event.body);
   
