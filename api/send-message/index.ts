@@ -19,9 +19,7 @@ function publish(message: string, origin: string, sender: string) {
   const formattedMessage = formatMessage(message, origin, sender);
   console.log(formattedMessage);
   const ably = new Ably.Realtime(process.env.ABLY_API_KEY_PUBLISH as string);
-  console.log(ably);
   const channel = ably.channels.get(CHANNEL);
-  console.log(channel);
   channel.publish(EVENT, formattedMessage,
   //   (err) => {
   //   if (err) {
