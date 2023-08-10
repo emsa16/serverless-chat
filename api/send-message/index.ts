@@ -17,7 +17,6 @@ function formatMessage(data: string, origin="server", nickname="Server") {
 
 function publish(message: string, origin: string, sender: string) {
   const formattedMessage = formatMessage(message, origin, sender);
-  console.log(formattedMessage);
   const ably = new Ably.Rest(process.env.ABLY_API_KEY_PUBLISH as string); // For unknown reason Ably.Realtime does not work when deployed on Netlify, the publish call never reaches Ably
   const channel = ably.channels.get(CHANNEL);
   channel.publish(EVENT, formattedMessage,
@@ -89,9 +88,6 @@ export async function handler(event: HandlerEvent, _: HandlerContext) {
       headers: HEADERS,
     };
   }
-
-  // TODO implement or remove
-  // const clientId = event.queryStringParameters?.["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
 
   const responseMessage = await parseIncomingMessage(event.body);
   
