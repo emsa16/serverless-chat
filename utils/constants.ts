@@ -4,5 +4,5 @@ export const HEADERS = {
     'Content-Type': 'application/json'
 };
 
-export const CHANNEL = 'getting-started';
-export const EVENT = 'greeting';
+export const CHANNEL = 'chat';
+export const EVENT = 'chat-message';

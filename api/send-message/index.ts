@@ -18,14 +18,15 @@ function formatMessage(data: string, origin="server", nickname="Server") {
 function publish(message: string, origin: string, sender: string) {
   const formattedMessage = formatMessage(message, origin, sender);
   console.log(formattedMessage);
-  const ably = new Ably.Realtime(process.env.ABLY_API_KEY_PUBLISH as string);
+  // const ably = new Ably.Realtime(process.env.ABLY_API_KEY_PUBLISH as string);
+  const ably = new Ably.Rest(process.env.ABLY_API_KEY_PUBLISH as string);
   const channel = ably.channels.get(CHANNEL);
   channel.publish(EVENT, formattedMessage,
-    (err) => {
-      if (err) {
-        console.log(err);
-      }
-    }
+    // (err) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    // }
   );
 }
 
