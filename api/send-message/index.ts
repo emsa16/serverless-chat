@@ -59,8 +59,13 @@ async function parseIncomingMessage(message: string) {
               return formatMessage("Error: Empty message");
           }
       case "connect":
-          publish(`${msg.sender} has connected`, "server", msg.sender);
-          return JSON.stringify({message: "Connection broadcast"});
+          if (msg.sender) {
+            publish(`${msg.sender} has connected`, "server", msg.sender);
+            return JSON.stringify({message: "Connection broadcast"});
+          } else {
+            console.log("ERROR: Missing nickname");
+            return formatMessage("Error: Missing nickname");
+          }
       case "disconnect":
           publish(`${msg.sender} has disconnected`, "server", msg.sender);
           return JSON.stringify({message: "Disconnection broadcast"});  
